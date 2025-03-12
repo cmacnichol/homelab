@@ -26,6 +26,10 @@ module "talos" {
     proxmox_cluster = "homelab"
   }
 
+  storage = {
+    shared_stor  = false # Set to true if your ProxMox cluster is using shared storage, IE: CEPH, for images.
+  }
+
   nodes = {
     "ctrl-00" = {
       host_node     = "abel"

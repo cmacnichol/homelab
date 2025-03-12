@@ -10,6 +10,13 @@ variable "proxmox" {
   sensitive = true
 }
 
+# Declaring Storage Variable to pass into Talos module.
+ variable "storage" {
+   type = object({
+     shared_stor  = bool
+   })
+ }
+
 #variable "cluster_config" {
 #  description = "Talos node configuration"
 #  type = object({

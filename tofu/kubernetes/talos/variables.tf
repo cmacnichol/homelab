@@ -46,3 +46,10 @@ variable "cilium" {
     install = string
   })
 }
+
+# Declaring Storage Variable for passed in variable
+ variable "storage" {
+   type = object({
+     shared_stor  = bool
+   })
+ }
