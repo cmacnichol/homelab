@@ -10,6 +10,23 @@ variable "proxmox" {
   sensitive = true
 }
 
+# Storage Variable for Disk and Img Creation
+variable "storage" {
+  type = object({
+    storage_name = string
+    imgstor_name = string
+    shared_stor  = bool
+  })
+  sensitive = false
+}
+
+variable "key_file" {
+  type  = string
+  default   = "/root/.ssh/id_ed25519"
+  description = "Private Key File for ProxMox"
+  sensitive = false
+}
+
 #variable "cluster_config" {
 #  description = "Talos node configuration"
 #  type = object({

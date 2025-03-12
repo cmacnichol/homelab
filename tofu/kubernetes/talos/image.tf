@@ -38,14 +38,24 @@ resource "talos_image_factory_schematic" "updated" {
   schematic = local.update_schematic
 }
 
+# Create Talos Img File in local storage.  If shared_stor is set to true, this will only download one copy.
 resource "proxmox_virtual_environment_download_file" "this" {
-  for_each = {
+  for_each = var.storage.shared_stor ? {
+    # Select only the first entry in var.nodes when shared_stor is true
+    for k, v in var.nodes :
+    "talos_${v.update == true ? local.update_image_id : local.image_id}" => {
+      host_node = v.host_node
+      version   = v.update == true ? local.update_version : local.version
+      schematic = v.update == true ? talos_image_factory_schematic.updated.id : talos_image_factory_schematic.this.id
+    } if var.storage.shared_stor == true && k == keys(var.nodes)[0] # Ensuring only the first node runs
+  } : {
+    # Default behavior: Iterate over all nodes if shared_stor is false
     for k, v in var.nodes :
     "${v.host_node}_${v.update == true ? local.update_image_id : local.image_id}" => {
       host_node = v.host_node
       version   = v.update == true ? local.update_version : local.version
       schematic = v.update == true ? talos_image_factory_schematic.updated.id : talos_image_factory_schematic.this.id
-    }
+    } if var.storage.shared_stor == false
   }
 
   node_name    = each.value.host_node
@@ -57,3 +67,5 @@ resource "proxmox_virtual_environment_download_file" "this" {
   decompression_algorithm = "gz"
   overwrite               = false
 }
+
+

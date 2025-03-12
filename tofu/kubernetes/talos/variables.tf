@@ -1,3 +1,12 @@
+# Declaring Storage Variable to pass into Talos module
+variable "storage" {
+  type = object({
+    storage_name = string
+    imgstor_name = string
+    shared_stor  = bool
+  })
+}
+
 variable "image" {
   description = "Talos image configuration"
   type = object({
@@ -30,6 +39,7 @@ variable "nodes" {
     machine_type  = string
     datastore_id = optional(string, "local-zfs")
     ip            = string
+    dns           = optional(list(string))
     mac_address   = string
     vm_id         = number
     cpu           = number

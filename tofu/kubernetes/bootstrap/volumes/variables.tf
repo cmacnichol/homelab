@@ -13,7 +13,7 @@ variable "volumes" {
     object({
       node = string
       size = string
-      storage = optional(string, "local-zfs")
+      storage = optional(string, "vm-disks")
       vmid = optional(number, 9999)
       format = optional(string, "raw")
     })

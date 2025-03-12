@@ -27,7 +27,7 @@ resource "proxmox_virtual_environment_vm" "this" {
   }
 
   network_device {
-    bridge      = "vmbr0"
+    bridge      = "vmbr80"
     mac_address = each.value.mac_address
   }
 
@@ -40,7 +40,8 @@ resource "proxmox_virtual_environment_vm" "this" {
     ssd          = true
     file_format  = "raw"
     size         = 20
-    file_id      = proxmox_virtual_environment_download_file.this["${each.value.host_node}_${each.value.update == true ? local.update_image_id : local.image_id}"].id
+    file_id = proxmox_virtual_environment_download_file.this["${var.storage.shared_stor ? "talos" : each.value.host_node}_${each.value.update == true ? local.update_image_id : local.image_id}"].id
+
   }
 
   boot_order = ["scsi0"]
@@ -51,6 +52,14 @@ resource "proxmox_virtual_environment_vm" "this" {
 
   initialization {
     datastore_id = each.value.datastore_id
+
+    dynamic "dns" {
+      for_each = try(each.value.dns, null) != null ? { "enabled" = each.value.dns } : {}
+      content {
+        servers = each.value.dns
+      }
+    }
+
     ip_config {
       ipv4 {
         address = "${each.value.ip}/24"
@@ -64,7 +73,7 @@ resource "proxmox_virtual_environment_vm" "this" {
     content {
       # Passthrough iGPU
       device  = "hostpci0"
-      mapping = "iGPU"
+      mapping = "iGPU-${each.value.host_node}"
       pcie    = true
       rombar  = true
       xvga    = false
