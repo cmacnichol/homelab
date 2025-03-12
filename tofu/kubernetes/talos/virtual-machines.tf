@@ -73,7 +73,7 @@ resource "proxmox_virtual_environment_vm" "this" {
     content {
       # Passthrough iGPU
       device  = "hostpci0"
-      mapping = "iGPU-${each.value.host_node}"
+      mapping = "iGPU"
       pcie    = true
       rombar  = true
       xvga    = false

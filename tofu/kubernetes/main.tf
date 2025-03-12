@@ -40,7 +40,6 @@ module "talos" {
       vm_id         = 8000
       cpu           = 8
       ram_dedicated = 28672
-      igpu          = true
       datastore_id  = "${var.storage.storage_name}"
     }
     "ctrl-01" = {
@@ -51,7 +50,6 @@ module "talos" {
       vm_id         = 8001
       cpu           = 4
       ram_dedicated = 20480
-      igpu          = true
       datastore_id  = "${var.storage.storage_name}"
       #update        = true
     }
@@ -63,7 +61,6 @@ module "talos" {
       vm_id         = 8002
       cpu           = 4
       ram_dedicated = 4096
-      igpu          = true
       datastore_id  = "${var.storage.storage_name}"
       #update        = true
     }
@@ -75,6 +72,7 @@ module "talos" {
       vm_id         = 8010
       cpu           = 8
       ram_dedicated = 4096
+      igpu          = true
       datastore_id  = "${var.storage.storage_name}"
     }
     "work-01" = {
@@ -85,6 +83,7 @@ module "talos" {
       vm_id         = 8011
       cpu           = 8
       ram_dedicated = 4096
+      igpu          = true
       datastore_id  = "${var.storage.storage_name}"
     }
     "work-02" = {
@@ -95,6 +94,7 @@ module "talos" {
       vm_id         = 8012
       cpu           = 8
       ram_dedicated = 4096
+      igpu          = true
       datastore_id  = "${var.storage.storage_name}"
     }
   }
@@ -127,7 +127,7 @@ module "proxmox_csi_plugin" {
 
   proxmox = var.proxmox
 }
-
+/* 
 module "volumes" {
   depends_on = [module.proxmox_csi_plugin]
   source = "./bootstrap/volumes"
@@ -196,3 +196,4 @@ module "volumes" {
     }
   }
 }
+ */
