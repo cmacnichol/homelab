@@ -10,6 +10,23 @@ variable "proxmox" {
   sensitive = true
 }
 
+variable "proxmox_nodes" {
+  description = "ProxMox Node Configuration"
+  type = object({
+    node_name = string
+    endpoint = string
+    api_token = string
+    default = optional(bool, false)
+    insecure = optional(bool, true)
+    username = optional(string, "root")
+  })
+  validation {
+    condition = length([for node in var.proxmox_nodes : node if node.default == true]) == 1
+    error_message = "Only one node can have 'default = true'."
+  }
+  sensitive = true
+}
+
 # Storage Variable for Disk and Img Creation
 variable "storage" {
   type = object({
