@@ -1,14 +1,11 @@
 module "talos" {
   source = "./talos"
 
-  # Declaring to pass into the child module
-  storage = {
-    storage_name = var.storage.storage_name
-    imgstor_name = var.storage.imgstor_name
-    shared_stor  = var.storage.shared_stor
+    providers = {
+    proxmox = proxmox
   }
 
-  image = {
+image = {
     version = "v1.9.2"
     update_version = "v1.9.3" # renovate: github-releases=siderolabs/talos
     schematic = file("${path.module}/talos/image/schematic.yaml")
@@ -29,6 +26,12 @@ module "talos" {
     talos_version   = "v1.8"
     proxmox_cluster = "homelab"
   }
+  # Declaring to pass into the child module
+  storage = {
+    storage_name = "vm-disks"
+    imgstor_name = "ISOs-Templates"
+    shared_stor  = false # Set to true if your ProxMox cluster is using shared storage, IE: CEPH, for images.
+   }
 
   nodes = {
     "ctrl-00" = {
@@ -127,7 +130,7 @@ module "proxmox_csi_plugin" {
 
   proxmox = var.proxmox
 }
-/* 
+
 module "volumes" {
   depends_on = [module.proxmox_csi_plugin]
   source = "./bootstrap/volumes"
@@ -196,4 +199,3 @@ module "volumes" {
     }
   }
 }
- */
