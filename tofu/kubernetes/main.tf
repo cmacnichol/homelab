@@ -26,12 +26,12 @@ image = {
     talos_version   = "v1.8"
     proxmox_cluster = "homelab"
   }
-  # Declaring to pass into the child module
+  # Declaring to pass into the child module.  Set in tfvars file.
   storage = {
-    storage_name = "vm-disks"
-    imgstor_name = "ISOs-Templates"
-    shared_stor  = false # Set to true if your ProxMox cluster is using shared storage, IE: CEPH, for images.
-   }
+    storage_name = var.storage.storage_name
+    imgstor_name = var.storage.imgstor_name
+    shared_stor  = var.storage.shared_stor
+  }
 
   nodes = {
     "ctrl-00" = {
@@ -146,14 +146,14 @@ module "volumes" {
       size = "4G"
     }
     pv-radarr = {
-      node = "pve"
+      node = "prox"
       size = "4G"
     }
     pv-lidarr = {
-      node = "pve"
+      node = "mox"
       size = "4G"
     }
-    pv-prowlarr = {
+/*     pv-prowlarr = {
       node = "prox"
       size = "1G"
     }
@@ -196,6 +196,6 @@ module "volumes" {
     pv-prometheus = {
       node = "mox"
       size = "10G"
-    }
+    } */
   }
 }

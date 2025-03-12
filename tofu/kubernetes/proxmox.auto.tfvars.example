@@ -1,0 +1,9 @@
+# tofu/proxmox.auto.tfvars
+proxmox = {
+  name         = "PrimaryNodeName"
+  cluster_name = "homelab"
+  endpoint     = "https://NODEIP:8006"
+  insecure     = true
+  username     = "root"
+  api_token    = "ProxMoxTokenName=ProxMoxTokenID"
+}
