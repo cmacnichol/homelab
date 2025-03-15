@@ -5,7 +5,7 @@ metadata:
   namespace: authelia
 spec:
   dnsNames:
-    - authelia.stonegarden.dev
+    - authelia.macnichol.us
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer

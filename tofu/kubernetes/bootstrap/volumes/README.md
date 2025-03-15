@@ -8,7 +8,7 @@ https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/con
 
 ```shell
 curl --request POST \
-  --url https://192.168.1.62:8006/api2/json/nodes/abel/storage/local-zfs/content \
+  --url https://192.168.80.62:8006/api2/json/nodes/abel/storage/local-zfs/content \
   --header 'Authorization: PVEAPIToken=root@pam!tofu=<UUID>' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data vmid=9999 \

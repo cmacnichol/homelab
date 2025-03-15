@@ -10,7 +10,7 @@ variable "proxmox" {
   sensitive = true
 }
 
-variable "proxmox_nodes" {
+/* variable "proxmox_nodes" {
   description = "ProxMox Node Configuration"
   type = object({
     node_name = string
@@ -25,7 +25,7 @@ variable "proxmox_nodes" {
     error_message = "Only one node can have 'default = true'."
   }
   sensitive = true
-}
+} */
 
 # Storage Variable for Disk and Img Creation
 variable "storage" {

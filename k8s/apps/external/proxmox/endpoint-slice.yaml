@@ -13,7 +13,7 @@ ports:
     port: 8006
 endpoints:
   - addresses:
-      - 192.168.1.42  # euclid
-      - 192.168.1.52  # cantor
-      - 192.168.1.62  # abel
+      - 10.11.41.10  # pve
+      - 10.11.41.11  # prox
+      - 10.11.41.12  # mox
     conditions: { } # https://github.com/argoproj/argo-cd/issues/15554

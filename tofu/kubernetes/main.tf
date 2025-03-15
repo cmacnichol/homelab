@@ -5,14 +5,14 @@ module "talos" {
     proxmox = proxmox
   }
 
-image = {
-    version = "v1.9.2"
-    update_version = "v1.9.4" # renovate: github-releases=siderolabs/talos
-    schematic = file("${path.module}/talos/image/schematic.yaml")
-    # Point this to a new schematic file to update the schematic
-    update_schematic = file("${path.module}/talos/image/schematic.yaml")
-    proxmox_datastore = var.storage.imgstor_name
-  }
+  image = {
+      version = "v1.9.5"
+      update_version = "v1.9.5" # renovate: github-releases=siderolabs/talos
+      schematic = file("${path.module}/talos/image/schematic.yaml")
+      # Point this to a new schematic file to update the schematic
+      update_schematic = file("${path.module}/talos/image/schematic.yaml")
+      proxmox_datastore = var.storage.imgstor_name
+    }
 
   cilium = {
     values = file("${path.module}/../../k8s/infra/network/cilium/values.yaml")
@@ -23,7 +23,7 @@ image = {
     name            = "talos"
     endpoint        = "192.168.80.100"
     gateway         = "192.168.80.1"
-    talos_version   = "v1.8"
+    talos_version   = "v1.9.5"
     proxmox_cluster = "homelab"
   }
   # Declaring to pass into the child module.  Set in tfvars file.
@@ -38,11 +38,11 @@ image = {
       host_node     = "pve"
       machine_type  = "controlplane"
       ip            = "192.168.80.100"
-      dns           = ["1.1.1.1", "8.8.8.8"]
+      #dns           = ["1.1.1.1", "8.8.8.8"]
       mac_address   = "BC:24:11:2E:C8:00"
       vm_id         = 8000
       cpu           = 8
-      ram_dedicated = 28672
+      ram_dedicated = 4096
       datastore_id  = "${var.storage.storage_name}"
     }
     "ctrl-01" = {
@@ -52,7 +52,7 @@ image = {
       mac_address   = "BC:24:11:2E:C8:01"
       vm_id         = 8001
       cpu           = 4
-      ram_dedicated = 20480
+      ram_dedicated = 4096
       datastore_id  = "${var.storage.storage_name}"
       #update        = true
     }
@@ -141,7 +141,7 @@ module "volumes" {
   }
   proxmox_api = var.proxmox
   volumes = {
-    pv-sonarr = {
+/*     pv-sonarr = {
       node = "pve"
       size = "4G"
     }
@@ -152,7 +152,7 @@ module "volumes" {
     pv-lidarr = {
       node = "mox"
       size = "4G"
-    }
+    } */
 /*     pv-prowlarr = {
       node = "prox"
       size = "1G"

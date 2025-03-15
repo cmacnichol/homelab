@@ -5,7 +5,7 @@ metadata:
   namespace: coturn
 spec:
   dnsNames:
-    - coturn.stonegarden.dev
+    - coturn.macnichol.us
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer

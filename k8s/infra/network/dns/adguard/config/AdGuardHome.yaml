@@ -20,10 +20,10 @@ dns:
   ratelimit_whitelist: [ ]
   refuse_any: true
   upstream_dns:
-    - 10.96.0.11
+    - 192.168.80.1
   upstream_dns_file: ""
   bootstrap_dns:
-    - 10.96.0.11
+    - 192.168.80.1
   fallback_dns:
     - 1.1.1.1
     - 9.9.9.9
@@ -141,16 +141,12 @@ filtering:
   parental_block_host: family-block.dns.adguard.com
   safebrowsing_block_host: standard-block.dns.adguard.com
   rewrites:
-    - domain: coturn.stonegarden.dev
-      answer: 192.168.1.226
-    - domain: proxmox.stonegarden.dev
-      answer: 192.168.1.221
-    - domain: truenas.stonegarden.dev
-      answer: 192.168.1.221
-    - domain: '*.stonegarden.dev'
-      answer: 192.168.1.220
-    - domain: stonegarden.dev
-      answer: 192.168.1.220
+    - domain: proxmox.macnichol.us
+      answer: 10.11.41.10
+    - domain: '*.macnichol.us'
+      answer: 192.168.80.220
+    - domain: macnichol.us
+      answer: 192.168.80.220
   safebrowsing_cache_size: 1048576
   safesearch_cache_size: 1048576
   parental_cache_size: 1048576

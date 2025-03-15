@@ -5,7 +5,7 @@ metadata:
   namespace: lldap
 spec:
   dnsNames:
-    - lldap.stonegarden.dev
+    - lldap.macnichol.us
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer

@@ -7,22 +7,22 @@ warp-routing:
   enabled: true
 
 ingress:
-  - hostname: hello.stonegarden.dev
+  - hostname: hello.macnichol.us
     service: hello_world
-#  - hostname: proxmox.stonegarden.dev
+#  - hostname: proxmox.macnichol.us
 #    service: https://proxmox.proxmox.svc.cluster.local:443
 #    originRequest:
-#      originServerName: proxmox.stonegarden.dev
-#  - hostname: truenas.stonegarden.dev
+#      originServerName: proxmox.macnichol.us
+#  - hostname: truenas.macnichol.us
 #    service: https://truenas.truenas.svc.cluster.local:443
 #    originRequest:
-#      originServerName: truenas.stonegarden.dev
-  - hostname: "*.stonegarden.dev"
+#      originServerName: truenas.macnichol.us
+  - hostname: "*.macnichol.us"
     service: https://cilium-gateway-external.gateway.svc.cluster.local:443
     originRequest:
-      originServerName: "*.stonegarden.dev"
-  - hostname: stonegarden.dev
+      originServerName: "*.macnichol.us"
+  - hostname: macnichol.us
     service: https://cilium-gateway-external.gateway.svc.cluster.local:443
     originRequest:
-      originServerName: stonegarden.dev
+      originServerName: macnichol.us
   - service: http_status:404
