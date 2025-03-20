@@ -6,13 +6,13 @@ configs:
     admin.enabled: false
     url: https://argocd.macnichol.us
     # https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#sensitive-data-and-sso-client-secrets
-    oidc.config: |
-      name: 'Authelia'
-      issuer: 'https://authelia.macnichol.us'
-      clientID: 'argocd'
-      clientSecret: $oidc:authelia.clientSecret
-      cliClientID: 'argocd-cli'
-      requestedScopes: [ 'openid', 'profile', 'email', 'groups', 'offline_access' ]
+    #oidc.config: |
+    #  name: 'Authelia'
+    #  issuer: 'https://authelia.macnichol.us'
+    #  clientID: 'argocd'
+    #  clientSecret: $oidc:authelia.clientSecret
+    #  cliClientID: 'argocd-cli'
+    #  requestedScopes: [ 'openid', 'profile', 'email', 'groups', 'offline_access' ]
   cmp:
     create: true
     plugins:

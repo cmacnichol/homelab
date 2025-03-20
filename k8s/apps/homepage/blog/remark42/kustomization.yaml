@@ -7,7 +7,7 @@ configMapGenerator:
     literals:
       - TIME_ZONE=Europe/Oslo
       - REMARK_URL=https://remark42.macnichol.us
-      - SITE=stonegarden.dev
+      - SITE=macnichol.dev
 
 resources:
   - svc.yaml

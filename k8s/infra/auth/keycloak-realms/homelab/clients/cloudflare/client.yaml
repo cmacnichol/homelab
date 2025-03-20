@@ -15,6 +15,6 @@ spec:
       namespace: keycloak
       key: secret
     standardFlowEnabled: true
-    baseUrl: "https://stonegarden.cloudflareaccess.com"
+    baseUrl: "https://macnichol.cloudflareaccess.com"
     validRedirectUris:
-      - "https://stonegarden.cloudflareaccess.com/cdn-cgi/access/callback"
+      - "https://macnichol.cloudflareaccess.com/cdn-cgi/access/callback"

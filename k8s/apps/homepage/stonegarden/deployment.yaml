@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: stonegarden
-  namespace: stonegarden
+  name: macnichol
+  namespace: macnichol
   labels:
-    app: stonegarden
+    app: macnichol
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: stonegarden
+      app: macnichol
   template:
     metadata:
-      namespace: stonegarden
+      namespace: macnichol
       labels:
-        app: stonegarden
+        app: macnichol
     spec:
       securityContext:
         runAsNonRoot: true
@@ -25,8 +25,8 @@ spec:
         seccompProfile:
           type: RuntimeDefault
       containers:
-        - name: stonegarden
-          image: registry.gitlab.com/vehagn/stonegarden
+        - name: macnichol
+          image: registry.gitlab.com/vehagn/macnichol
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false

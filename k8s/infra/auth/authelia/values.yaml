@@ -26,7 +26,7 @@ configMap:
     encryption_key: { secret_name: crypto }
     cookies:
       - subdomain: authelia
-        domain: stonegarden.dev
+        domain: macnichol.dev
 
   storage:
     encryption_key: { secret_name: crypto }
@@ -42,7 +42,7 @@ configMap:
     smtp:
       enabled: true
       address: submission://smtp.sendgrid.net:587
-      sender: Authelia <ikkje-noko-svar@stonegarden.dev>
+      sender: Authelia <ikkje-noko-svar@macnichol.dev>
       disable_html_emails: true
       username: apikey
       password: { secret_name: smtp-auth }
@@ -52,12 +52,12 @@ configMap:
       enabled: true
       implementation: lldap
       address: ldaps://lldap.macnichol.us
-      base_dn: dc=stonegarden,dc=dev
+      base_dn: dc=macnichol,dc=dev
       users_filter: (&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))
       additional_users_dn: ou=people
       groups_filter: (member={dn})
       additional_groups_dn: ou=groups
-      user: UID=authelia,OU=people,DC=stonegarden,DC=dev
+      user: UID=authelia,OU=people,DC=macnichol,DC=dev
       password: { secret_name: lldap-auth }
 
   identity_providers:
